@@ -21,4 +21,9 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def link_to_button(click_text, url, button_class = 'btn-default')
+    button_class = "btn #{button_class}"
+    link_to click_text, url, :class => button_class
+  end
+
 end

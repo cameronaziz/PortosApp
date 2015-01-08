@@ -2,4 +2,9 @@
     <div class='container' style='margin-top: 15px'>
       <%= debug(params)%>
     </div>
+    <% unless logged_in? %>
+        <div class='container'>
+            <%= link_to 'Login', login_path%>
+        </div>
+    <% end %>
 <% end %>

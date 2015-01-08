@@ -8,7 +8,9 @@
   <%= render(partial: 'layouts/shiv') %>
 </head>
 <body>
-<%= render(partial: 'layouts/nav') %>
+<% unless current_page?(login_path)%>
+    <%= render(partial: 'layouts/nav') %>
+<% end %>
 <div class='container'>
     <%= yield %>
 </div>

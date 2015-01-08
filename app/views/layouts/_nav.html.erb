@@ -17,16 +17,19 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounts<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                <%= nav_li_link 'Profile', '' %>
+                <%= nav_li_link 'Profile', current_user %>
                 <li class="divider"></li>
                 <li class="dropdown-header">Administration</li>
-                <%= nav_li_link 'Register User', users_new_path %>
+                <%= nav_li_link 'Users', users_path %>
+                <%= nav_li_link 'Groups', groups_path %>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <%= nav_li_link 'Help', help_path %>
-            <%= nav_li_link 'Logout', '#' %>
+            <% if logged_in? %>
+                <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+                <% end %>
           </ul>
         </div><!--/.nav-collapse -->
       </div><!--/.container-fluid -->
