@@ -9,3 +9,11 @@
   <strong>Username: </strong><%= @user.username %><br>
   <strong>Email: </strong><%= @user.email %><br>
 </p>
+<strong>Groups: </strong>
+<ul>
+  <% @user.groups.each do |group| %>
+      <li><%= group.name %></li>
+  <% end %>
+</ul>
+<%= link_to_button  'Edit', edit_user_path, 'btn-primary' %>
+<%= link_to 'Delete', user, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>

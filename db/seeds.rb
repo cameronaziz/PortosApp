@@ -5,3 +5,24 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'faker'
+include Faker
+
+User.destroy_all
+
+10.times do
+  first_name = Name.first_name
+  last_name = Name.last_name
+  fn = first_name.downcase
+  ln = last_name.downcase
+
+  User.create(
+    username: "#{fn}#{ln}",
+    first_name: first_name,
+    last_name: last_name,
+    email: Internet.free_email,
+    password_digest: BCrypt::Password.create('letmein')
+  )
+
+end

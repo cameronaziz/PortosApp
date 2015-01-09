@@ -15,16 +15,6 @@ module SessionsHelper
     end
   end
 
-
-  def store_location
-    session[:forwarding_url] = request.url if request.get?
-  end
-
-  def redirect_back_or(default)
-    redirect_to(session[:forwarding_url] || default)
-    session.delete(:forwarding_url)
-  end
-
   def logged_in?
     !current_user.nil?
   end
@@ -46,5 +36,23 @@ module SessionsHelper
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
   end
+
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
+  end
+
+  def redirect_back_or(default = root_path)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  def logged_in_user
+
+  end
+
+  def membership_of_group(group)
+    
+  end
+
 
 end
