@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user
+
   def new
   end
 
@@ -11,7 +13,7 @@ class SessionsController < ApplicationController
       end
       redirect_back_or root_path
     else
-      render 'sessions/new'
+      redirect_to login_path
     end
   end
 

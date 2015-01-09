@@ -1,5 +1,6 @@
 <%= form_for :session, url: login_path, html: {class:'form-signin'} do |f| %>
     <h2 class="form-signin-heading">Login to Portos App</h2>
+    <%= render partial: 'shared/alert' %>
     <div class="form-group">
       <%= f.label :username, class: 'sr-only'%>
       <%= f.text_field :username, autofocus: true, class:'form-control input-lg top-input', placeholder: 'Username' %>

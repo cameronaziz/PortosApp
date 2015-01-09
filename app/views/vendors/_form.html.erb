@@ -1,0 +1,28 @@
+<%= render partial: 'shared/errors', :locals => {:object => @vendor}%>
+<div class="col-md-4">
+  <%= form_for @vendor do |f| %>
+      <div class="form-group">
+        <%= f.label :name, class: 'sr-only' %>
+        <%= f.text_field :name, class: 'form-control', placeholder: 'Vendor Name' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :contact, class: 'sr-only' %>
+        <%= f.text_field :contact, class: 'form-control', placeholder: 'Contact Name' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, class: 'sr-only'  %>
+        <%= f.text_field :email, class: 'form-control', placeholder: 'Email Address' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :phone, class: 'sr-only'  %>
+        <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number' %>
+      </div>
+      <div class="form-group">
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+      </div>
+  <% end %>
+</div>
+<script>
+    $('#vendor_phone').mask('(000) 000-0000');
+
+</script>

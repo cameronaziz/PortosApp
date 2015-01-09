@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :destroy, :update]
+  before_action do
+    authenticate_user_and_group(['Administrators', 'Specialists'], false)
+  end
 
   def index
     @users = User.all
@@ -17,11 +20,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     create_username ## todo: fix so that it will error properly if username taken.
-    params[:groups][:id].each do |group|
-      unless group.empty?
-        @user.memberships.build(:group_id => group)
-      end
-    end
     if @user.save
       redirect_to users_url, notice: "User was successfully created. Username: #{@user.username}"
     else
@@ -30,7 +28,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @all_groups = Group.all
     @user_group = @user.memberships.build
   end
 

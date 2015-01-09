@@ -15,16 +15,6 @@ module SessionsHelper
     end
   end
 
-
-  def store_location
-    session[:forwarding_url] = request.url if request.get?
-  end
-
-  def redirect_back_or(default)
-    redirect_to(session[:forwarding_url] || default)
-    session.delete(:forwarding_url)
-  end
-
   def logged_in?
     !current_user.nil?
   end
@@ -45,6 +35,58 @@ module SessionsHelper
     user.remember
     cookies.permanent.signed[:user_id] = user.id
     cookies.permanent[:remember_token] = user.remember_token
+  end
+
+  def store_location
+    session[:forwarding_url] = request.url if request.get?
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  def authenticate_user_and_group(group_name, is_id = true)
+    if logged_in?
+      unless authenticate_group(group_name, is_id)
+        flash[:alert] = 'You do not have authorization to view that page.'
+        redirect_to root_path
+      end
+    else
+      authenticate_user
+    end
+  end
+
+  def authenticate_group(group_name, is_id = true)
+    ## todo: improve to not hit DB so many times.
+    if group_name.kind_of?(Array)
+      group_name.each do |group|
+        if
+        is_id ?
+            current_user.groups.include?(Group.find(group)) :
+            current_user.groups.include?(Group.find_by_name(group))
+          @authenticated_user = true
+          return true
+        end
+      end
+    else
+      if
+      is_id ?
+          current_user.groups.include?(Group.find(group_name)) :
+          current_user.groups.include?(Group.find_by_name(group_name))
+        @authenticated_user = true
+        return true
+      end
+    end
+    false
+  end
+
+  def authenticate_user
+    unless logged_in?
+      store_location
+      flash[:alert] = 'Please log in to view that page.'
+      redirect_to login_url
+    end
   end
 
 end
