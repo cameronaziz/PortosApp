@@ -1,28 +1,26 @@
 <%= render partial: 'shared/notice' %>
 <h1>Item List</h1>
 <%= link_to_button 'Create Item', new_item_path, 'btn-primary' %>
-<section id="no-more-tables">
-<table class='table'>
-  <thead>
-  <tr>
-    <th>Item</th>
-    <th>Favorite</th>
-    <th class="text-center" colspan="3">Actions</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @items.each do |item| %>
+<section id='mobile-table-wrapper'>
+    <table class='table'>
+      <thead>
       <tr>
-        <td data-title="Item"><%= item.name %></td>
-        <td data-title="Favorite"><%= item.is_favorite ? "<span class='glyphicon glyphicon-ok'></span>".html_safe : "<span class='glyphicon glyphicon-remove'></span>".html_safe %></td>
-        <td class="text-center"><%= link_to 'Show', item %></td>
-        <td class="text-center"><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td class="text-center"><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}  %></td>
+        <th>Item</th>
+        <th>Favorite</th>
+        <th class="text-center" colspan="3">Actions</th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
-  </section>
-
-
+      </thead>
+      <tbody>
+      <% @items.each do |item| %>
+          <tr>
+            <td data-title="Item"><%= item.name %></td>
+            <td data-title="Favorite"><%= item.is_favorite ? "<span class='glyphicon glyphicon-ok'></span>".html_safe : "<span class='glyphicon glyphicon-remove'></span>".html_safe %></td>
+            <td class="text-center"><%= link_to 'Show', item %></td>
+            <td class="text-center"><%= link_to 'Edit', edit_item_path(item) %></td>
+            <td class="text-center"><%= link_to 'Delete', item, method: :delete, data: {confirm: 'Are you sure?'}  %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+</section>
 <br/>

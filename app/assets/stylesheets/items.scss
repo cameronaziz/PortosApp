@@ -1,32 +1,35 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// todo: make this better
+
 @media only screen and (max-width: 800px) {
 
-  #no-more-tables table {
+  #mobile-table-wrapper table {
     margin-top: 10px;
   }
 
   /* Force table to not be like tables anymore */
-  #no-more-tables table,
-  #no-more-tables thead,
-  #no-more-tables tbody,
-  #no-more-tables th,
-  #no-more-tables td,
-  #no-more-tables tr {
+  #mobile-table-wrapper table,
+  #mobile-table-wrapper thead,
+  #mobile-table-wrapper tbody,
+  #mobile-table-wrapper th,
+  #mobile-table-wrapper td,
+  #mobile-table-wrapper tr {
     display: block;
   }
 
   /* Hide table headers (but not display: none;, for accessibility) */
-  #no-more-tables thead tr {
+  #mobile-table-wrapper thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
   }
 
-  #no-more-tables tr { border: 1px solid #ccc; }
+  #mobile-table-wrapper tr { border: 1px solid #ccc; }
 
-  #no-more-tables td {
+  #mobile-table-wrapper td {
     /* Behave like a "row" */
     border: none;
     border-bottom: 1px solid #eee;
@@ -36,7 +39,7 @@
     text-align:left;
   }
 
-  #no-more-tables td:before {
+  #mobile-table-wrapper td:before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
@@ -52,5 +55,5 @@
   /*
   Label the data
   */
-  #no-more-tables td:before { content: attr(data-title); }
+  #mobile-table-wrapper td:before { content: attr(data-title); }
 }
