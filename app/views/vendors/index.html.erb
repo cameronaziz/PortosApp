@@ -1,0 +1,27 @@
+<%= render partial: 'shared/notice' %>
+<h1>Vendor List</h1>
+<%= link_to_button 'Create Vendor', new_vendor_path, 'btn-primary' %>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Vendor Name</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @vendors.each do |vendor| %>
+      <tr>
+        <td><%= link_to vendor.name, vendor %></td>
+        <td><%= vendor.phone %></td>
+        <td><%= vendor.email %></td>
+        <td><%= link_to 'Edit', edit_vendor_path(vendor) %></td>
+        <td><%= link_to 'Delete', vendor, method: :delete, data: {confirm: 'Are you sure?'}  %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>
+
+
