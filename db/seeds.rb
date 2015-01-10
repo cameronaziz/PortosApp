@@ -6,10 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+# Create Users
+
 require 'faker'
 include Faker
 
 User.destroy_all
+
+password = BCrypt::Password.create('letmein')
+
+me = User.create(
+    username: 'cameronaziz',
+    first_name: 'Cameron',
+    last_name: 'Aziz',
+    email: 'cameron.aziz@portosbakery.com',
+    password_digest: password,
+)
+group = Group.find_by_name('Administrators')
+
+me.groups << group
 
 10.times do
   first_name = Name.first_name
@@ -22,7 +38,11 @@ User.destroy_all
     first_name: first_name,
     last_name: last_name,
     email: Internet.free_email,
-    password_digest: BCrypt::Password.create('letmein')
+    password_digest: password
   )
 
 end
+
+# Create Vendors
+
+#

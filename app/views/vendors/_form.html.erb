@@ -1,3 +1,8 @@
+<% content_for :head do %>
+<script>
+    $('#vendor_phone').mask('(000) 000-0000');
+  </script>
+<% end %>
 <%= render partial: 'shared/errors', :locals => {:object => @vendor}%>
 <div class="col-md-4">
   <%= form_for @vendor do |f| %>
@@ -22,7 +27,3 @@
       </div>
   <% end %>
 </div>
-<script>
-    $('#vendor_phone').mask('(000) 000-0000');
-
-</script>
