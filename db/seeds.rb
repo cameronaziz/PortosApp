@@ -12,20 +12,25 @@
 require 'faker'
 include Faker
 
-User.destroy_all
-
 password = BCrypt::Password.create('letmein')
 
-me = User.create(
-    username: 'cameronaziz',
-    first_name: 'Cameron',
-    last_name: 'Aziz',
-    email: 'cameron.aziz@portosbakery.com',
-    password_digest: password,
-)
-group = Group.find_by_name('Administrators')
+if User.find_by_username('cameronaziz')
+  me =  User.find_by_username('cameronaziz')
+else
+  me = User.create(
+      username: 'cameronaziz',
+      first_name: 'Cameron',
+      last_name: 'Aziz',
+      email: 'cameron.aziz@portosbakery.com',
+      password_digest: password,
+  )
+  group = Group.find_by_name('Administrators')
+  me.groups << group
+end
 
-me.groups << group
+User.destroy_all
+
+me.save
 
 10.times do
   first_name = Name.first_name

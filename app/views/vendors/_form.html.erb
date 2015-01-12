@@ -22,8 +22,15 @@
         <%= f.label :phone, class: 'sr-only'  %>
         <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number' %>
       </div>
+      <%=  f.fields_for :catalog_items do |builder| %>
+      <%= render 'vendors/catalog_item_fields', f: builder %>
+      <% end %>
+
+
+
+
       <div class="form-group">
-        <%= f.submit 'Save', class: 'btn btn-primary' %>
+        <%= link_to_add_fields 'Add Item', f, :catalog_items, 'btn btn-primary' %> <%= f.submit 'Save', class: 'btn btn-primary' %>
       </div>
   <% end %>
 </div>

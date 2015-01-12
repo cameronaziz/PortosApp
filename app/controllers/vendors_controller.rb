@@ -1,5 +1,5 @@
 class VendorsController < ApplicationController
-  before_action :set_vendor, only: [:edit, :update, :destroy]
+  before_action :set_vendor, only: [:show, :edit, :update, :destroy]
 
   def index
     @vendors = Vendor.all
@@ -17,6 +17,10 @@ class VendorsController < ApplicationController
     else
       render new_vendor_path
     end
+  end
+
+  def show
+    @ingredients = @vendor.ingredients
   end
 
   def edit

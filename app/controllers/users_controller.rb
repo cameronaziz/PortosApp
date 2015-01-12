@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @groups = @user.groups.all
   end
 
   def create

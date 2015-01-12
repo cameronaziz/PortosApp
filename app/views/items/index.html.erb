@@ -1,7 +1,7 @@
 <%= render partial: 'shared/notice' %>
 <h1>Item List</h1>
 <%= link_to_button 'Create Item', new_item_path, 'btn-primary' %>
-<section id='mobile-table-wrapper'>
+<div id='mobile-table-wrapper'>
     <table class='table'>
       <thead>
       <tr>
@@ -22,5 +22,5 @@
       <% end %>
       </tbody>
     </table>
-</section>
+</div>
 <br/>

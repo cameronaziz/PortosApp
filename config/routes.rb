@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+
   root 'static_pages#home'
   get 'help' => 'static_pages#help'
 
@@ -8,7 +9,12 @@ Rails.application.routes.draw do
   resources :groups
 
   resources :items
-  resources :vendors
+  resources :vendors do
+    resources :ingredients
+  end
+  resources :ingredients
+  resources :catalog_items
+
 
 
   get    'login'   => 'sessions#new'

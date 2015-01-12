@@ -1,0 +1,14 @@
+<%= render partial: 'shared/notice' %>
+<h1><%= @vendor.name %>!</h1>
+<p>
+  <strong>Contact: </strong><%= @vendor.contact %><br>
+  <strong>Email: </strong><%= @vendor.email %><br>
+</p>
+<strong>Items: </strong>
+<ul>
+  <% @ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
+  <% end %>
+</ul>
+<%= link_to_button  'Edit', edit_vendor_path, 'btn-primary' %>
+<%= link_to 'Delete', vendor_path, method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-primary' %>

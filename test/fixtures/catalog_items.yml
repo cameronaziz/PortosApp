@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ingredient_id: 1
+  vendor_id: 1
+  box_size: 1
+  price: 9.99
+  vendor_code: 1
+  cheftec_code: 1
+
+two:
+  ingredient_id: 1
+  vendor_id: 1
+  box_size: 1
+  price: 9.99
+  vendor_code: 1
+  cheftec_code: 1
