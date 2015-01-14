@@ -11,30 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150112030739) do
+ActiveRecord::Schema.define(version: 20150113195127) do
 
   create_table "catalog_items", force: :cascade do |t|
-    t.integer  "ingredient_id"
+    t.integer  "product_id"
     t.integer  "vendor_id"
     t.integer  "box_size"
     t.decimal  "price"
     t.integer  "vendor_code"
     t.integer  "cheftec_code"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "description"
   end
 
   create_table "items", force: :cascade do |t|
@@ -49,6 +42,13 @@ ActiveRecord::Schema.define(version: 20150112030739) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "users", force: :cascade do |t|

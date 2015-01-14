@@ -1,0 +1,20 @@
+<%= render partial: 'shared/notice' %>
+<h1><%= @vendor.name %> Catalog</h1>
+<%= link_to_button 'Add New Product', new_product_path, 'btn-primary' %> <%= link_to_button 'Add Existing Product', new_product_path, 'btn-primary' %>
+<table class='table'>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th colspan="2">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @products.each do |ingredient| %>
+      <tr>
+        <td><%=  ingredient.name %></td>
+        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+<br/>

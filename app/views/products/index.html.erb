@@ -1,18 +1,18 @@
 <%= render partial: 'shared/notice' %>
-<h1>Ingredient List</h1>
-<%= link_to_button 'Add Ingredient', new_ingredient_path, 'btn-primary' %>
+<h1>Product List</h1>
+<%= link_to_button 'Add Product', new_product_path, 'btn-primary' %>
 <table class='table'>
   <thead>
   <tr>
-    <th>Ingredient</th>
+    <th>Product</th>
     <th colspan="2">Actions</th>
   </tr>
   </thead>
   <tbody>
-  <% @ingredients.each do |ingredient| %>
+  <% @products.each do |ingredient| %>
       <tr>
         <td><%=  ingredient.name %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+        <td><%= link_to 'Edit', edit_product_path(ingredient) %></td>
       </tr>
   <% end %>
   </tbody>

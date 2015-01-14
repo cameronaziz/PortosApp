@@ -1,5 +1,7 @@
 <fieldset>
   <div class='form-group'>
+    <%= f.label 'Item' %>
+    <%= f.collection_select :product, Product.all, :id, :name%><br>
     <%= f.label :box_size %>
     <%= f.text_field :box_size %><br>
     <%= f.label :price %>

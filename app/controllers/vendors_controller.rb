@@ -10,6 +10,10 @@ class VendorsController < ApplicationController
     @vendor = Vendor.new
   end
 
+  def new_with_vendor
+
+  end
+
   def create
     @vendor = Vendor.new(vendor_params)
     if @vendor.save
@@ -20,8 +24,9 @@ class VendorsController < ApplicationController
   end
 
   def show
-    @ingredients = @vendor.ingredients
+    @products = @vendor.products
   end
+
 
   def edit
   end
@@ -43,7 +48,7 @@ class VendorsController < ApplicationController
 
   private
   def vendor_params
-    params.require(:vendor).permit(:name, :email, :phone)
+    params.require(:vendor).permit(:name, :contact, :email, :phone, {:ingredient_ids => []}, :box_size, :price)
   end
 
   def set_vendor

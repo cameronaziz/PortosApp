@@ -1,7 +1,8 @@
 <% content_for :head do %>
+    <%= javascript_include_tag 'shared/mask', 'data-turbolinks-track' => true %>
 <script>
     $('#vendor_phone').mask('(000) 000-0000');
-  </script>
+</script>
 <% end %>
 <%= render partial: 'shared/errors', :locals => {:object => @vendor}%>
 <div class="col-md-4">
@@ -22,13 +23,6 @@
         <%= f.label :phone, class: 'sr-only'  %>
         <%= f.text_field :phone, class: 'form-control', placeholder: 'Phone Number' %>
       </div>
-      <%=  f.fields_for :catalog_items do |builder| %>
-      <%= render 'vendors/catalog_item_fields', f: builder %>
-      <% end %>
-
-
-
-
       <div class="form-group">
         <%= link_to_add_fields 'Add Item', f, :catalog_items, 'btn btn-primary' %> <%= f.submit 'Save', class: 'btn btn-primary' %>
       </div>

@@ -10,9 +10,9 @@ Rails.application.routes.draw do
 
   resources :items
   resources :vendors do
-    resources :ingredients
+    get 'products' => 'products#vendor_products'
   end
-  resources :ingredients
+  resources :products
   resources :catalog_items
 
 
